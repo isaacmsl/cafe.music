@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +9,48 @@
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="radios.js" defer></script>
     <script type="text/javascript" src="script.js" defer></script>
+
+    <style>
+        div {
+            width: 200px;
+            margin: auto;
+            margin-top: 90vh;
+        }
+
+        button {
+            transition: all 0.8s ease;
+            color: #fff;
+            border: 3px solid grey;
+            background-color: transparent;
+            padding: 10px;
+            border-radius: 9px;
+        }
+
+        button:hover {
+            color: white;
+            background-color: rgb(51, 51, 36);
+        }
+
+        button:active {
+            color: white;
+            background-color: black;
+            transform: scale(0.2);
+        }
+    </style>
 </head>
+
 <body>
-    <section></section>
-    <iframe width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+    <section>
+        <div>
+            <button id="btn-back">Back</button>
+            <button id="btn-play">
+                <h1>| |</h1>
+            </button>
+            <button id="btn-next">Next</button>
+        </div>
+    </section>
+    <iframe width="100%" height="100%" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
 </body>
+
 </html>
