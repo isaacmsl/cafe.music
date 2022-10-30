@@ -41,7 +41,7 @@ const checkKey = (event) => {
             setRadioFromIndex(currentRadio.index, isAutoPlay);
             break;
         case "ArrowLeft":
-            setRadioFromIndex(currentRadio.index + 1, true);
+            setRadioFromIndex(currentRadio.index - 1, true);
             break;
         case "ArrowRight":
             setRadioFromIndex(currentRadio.index + 1, true);
