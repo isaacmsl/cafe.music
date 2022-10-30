@@ -60,5 +60,17 @@ const checkKey = (event) => {
     }
 }
 
+    // btn onclick events
+    document.getElementById("btn-back").onclick = function(){
+        setLiveRadioFromIndex(currentRadio.indexLive - 1, true);
+    };
+    document.getElementById("btn-next").onclick=function(){
+        setLiveRadioFromIndex(currentRadio.indexLive + 1, true);
+    };
+    document.getElementById("btn-play").onclick=function(){
+        isAutoPlay = !isAutoPlay;
+        setLiveRadioFromIndex(currentRadio.indexLive, isAutoPlay);
+    };
+
 setLiveRadioFromIndex(currentRadio.indexLive, true);
 document.onkeydown = checkKey;
