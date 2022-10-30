@@ -3,6 +3,8 @@
 const YOUTUBE_BASE_EMBED = "https://www.youtube.com/embed/";
 const YOUTUBE_EMBED_DEFAULT_PARAMS = "?controls=0";
 const YOUTUBE_EMBED_AUTO_PLAY_PARAM = "&autoplay=1";
+const Overlay=document.getElementById("overlay")
+
 
 let isAutoPlay = false;
 
@@ -40,6 +42,7 @@ const setRadioFromIndex = (index, isAutoPlay) => {
 
 const checkKey = (event) => {
     const key = event.key
+
     switch (key) {
         case " ":
             isAutoPlay = !isAutoPlay;
@@ -58,7 +61,14 @@ const checkKey = (event) => {
             setRadioFromIndex(currentRadio.index - 1, true);
             break;
     }
+
 }
+
+Overlay.addEventListener("click", ()=>{
+isAutoPlay=!isAutoPlay;
+setLiveRadioFromIndex(currentRadio.indexLive, isAutoPlay);
+})
+
 
 setLiveRadioFromIndex(currentRadio.indexLive, true);
 document.onkeydown = checkKey;
