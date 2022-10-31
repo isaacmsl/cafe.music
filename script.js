@@ -29,8 +29,12 @@ const getAbsModularIndex = (index, mod) => {
 }
 
 const setLiveRadioFromIndex = (indexLive, isAutoPlay) => {
-    currentRadio.indexLive = getAbsModularIndex(indexLive, radios[currentRadio.index].youtubeEmbedCodes.length);
-    currentRadio.embedCode = radios[currentRadio.index].youtubeEmbedCodes[currentRadio.indexLive];
+    currentRadio.indexLive = getAbsModularIndex(
+        indexLive,
+        radios[currentRadio.index].youtubeEmbedCodes.length
+    );
+    currentRadio.embedCode =
+        radios[currentRadio.index].youtubeEmbedCodes[currentRadio.indexLive];
     iframe.src = getYoutubeLinkFromEmbedCode(currentRadio.embedCode, isAutoPlay);
 }
 const setRadioFromIndex = (index, isAutoPlay) => {
@@ -59,6 +63,17 @@ const checkKey = (event) => {
             break;
     }
 }
+
+document.getElementById("btn-back").onclick = () =>
+    setLiveRadioFromIndex(currentRadio.indexLive - 1, true);
+document.getElementById("btn-next").onclick = () =>
+    setLiveRadioFromIndex(currentRadio.indexLive + 1, true);
+
+document.getElementById("btn-play").onclick = () => {
+    console.log("clicked");
+    isAutoPlay = !isAutoPlay;
+    return setLiveRadioFromIndex(currentRadio.indexLive, isAutoPlay);
+};
 
 setLiveRadioFromIndex(currentRadio.indexLive, true);
 document.onkeydown = checkKey;
