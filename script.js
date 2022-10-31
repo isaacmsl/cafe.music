@@ -64,8 +64,6 @@ const checkKey = (event) => {
     }
 }
 
-// btn onclick events
-
 document.getElementById("btn-back").onclick = () =>
     setLiveRadioFromIndex(currentRadio.indexLive - 1, true);
 document.getElementById("btn-next").onclick = () =>
@@ -76,7 +74,6 @@ document.getElementById("btn-play").onclick = () => {
     isAutoPlay = !isAutoPlay;
     return setLiveRadioFromIndex(currentRadio.indexLive, isAutoPlay);
 };
-
 
 setLiveRadioFromIndex(currentRadio.indexLive, true);
 document.onkeydown = checkKey;
