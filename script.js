@@ -11,7 +11,7 @@ const iframe = document.querySelector("iframe");
 let currentRadio = {
     index: 0,
     embedCode: radios[0].youtubeEmbedCodes[0],
-    indexLive: 0
+    indexLive: 0,
 };
 
 const getYoutubeLinkFromEmbedCode = (embedCode, isAutoPlay) => {
@@ -26,20 +26,24 @@ const getYoutubeLinkFromEmbedCode = (embedCode, isAutoPlay) => {
 
 const getAbsModularIndex = (index, mod) => {
     return Math.abs(index) % mod;
-}
+};
 
 const setLiveRadioFromIndex = (indexLive, isAutoPlay) => {
-    currentRadio.indexLive = getAbsModularIndex(indexLive, radios[currentRadio.index].youtubeEmbedCodes.length);
-    currentRadio.embedCode = radios[currentRadio.index].youtubeEmbedCodes[currentRadio.indexLive];
+    currentRadio.indexLive = getAbsModularIndex(
+        indexLive,
+        radios[currentRadio.index].youtubeEmbedCodes.length
+    );
+    currentRadio.embedCode =
+        radios[currentRadio.index].youtubeEmbedCodes[currentRadio.indexLive];
     iframe.src = getYoutubeLinkFromEmbedCode(currentRadio.embedCode, isAutoPlay);
-}
+};
 const setRadioFromIndex = (index, isAutoPlay) => {
     currentRadio.index = getAbsModularIndex(index, radios.length);
     setLiveRadioFromIndex(0, isAutoPlay);
-}
+};
 
 const checkKey = (event) => {
-    const key = event.key
+    const key = event.key;
     switch (key) {
         case " ":
             isAutoPlay = !isAutoPlay;
@@ -58,19 +62,32 @@ const checkKey = (event) => {
             setRadioFromIndex(currentRadio.index - 1, true);
             break;
     }
-}
+};
 
-    // btn onclick events
-    document.getElementById("btn-back").onclick = function(){
-        setLiveRadioFromIndex(currentRadio.indexLive - 1, true);
-    };
-    document.getElementById("btn-next").onclick=function(){
-        setLiveRadioFromIndex(currentRadio.indexLive + 1, true);
-    };
-    document.getElementById("btn-play").onclick=function(){
-        isAutoPlay = !isAutoPlay;
-        setLiveRadioFromIndex(currentRadio.indexLive, isAutoPlay);
-    };
+// btn onclick events
+
+document.getElementById("btn-back").onclick = () =>
+    setLiveRadioFromIndex(currentRadio.indexLive - 1, true);
+document.getElementById("btn-next").onclick = () =>
+    setLiveRadioFromIndex(currentRadio.indexLive + 1, true);
+
+document.getElementById("btn-play").onclick = () => {
+    console.log("clicked");
+    isAutoPlay = !isAutoPlay;
+    return setLiveRadioFromIndex(currentRadio.indexLive, isAutoPlay);
+};
+
+// document.querySelectorAll("#btn-play, #logo-play").forEach((e) => {
+//     // isAutoPlay = !isAutoPlay;
+//     // return setLiveRadioFromIndex(currentRadio.indexLive, isAutoPlay);
+//     console.log("click")
+// })
+
+// document.querySelectorAll(".play-pause").forEach((e) => {
+//     // isAutoPlay = !isAutoPlay;
+//     // return setLiveRadioFromIndex(currentRadio.indexLive, isAutoPlay);
+//     e.onclick = () => console.log(456);
+// })
 
 setLiveRadioFromIndex(currentRadio.indexLive, true);
 document.onkeydown = checkKey;
