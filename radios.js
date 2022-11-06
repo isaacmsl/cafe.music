@@ -15,5 +15,12 @@ const radios = [
             "jfKfPfyJRdk",
             "aGSYKFb_zxg"
         ]
+    },
+    {
+        "name": "Electronic",
+        "youtubeEmbedCodes": [
+            "6Irus3d5f0E",
+            "HGGq6XKtTEw"
+        ]
     }
 ]
